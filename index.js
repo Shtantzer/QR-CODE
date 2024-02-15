@@ -12,10 +12,11 @@ import inquirer from "inquirer";
 inquirer
   .prompt([
    { message : "Enter your URL:",
-   name : "URL" },
+   name : "URL" }, // mora biti isti kao dolje u "answers"
   ])
   .then((answers) => {
-    console.log(answers);
+    const url = answers.URL; //property ".URL" poslije answers mora biti isti kao gore u "name"  
+    console.log(url);
   })
   .catch((error) => {
     if (error.isTtyError) {
