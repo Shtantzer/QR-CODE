@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+#box {
+    text-align: center;
+    width: 70%;
+    height: 30px;
+    margin: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#button {
+    display: block;
+    margin: auto;
+}

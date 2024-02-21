@@ -7,16 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <div id="input_field">
-        <label for="">Enter your URL:</label>
-        <br>
-        <br>
-        <input type="text">
-    </div> -->
+    <h1>ENTER YOUR URL TO GENERATE A QR-CODE:</h1>
     <form action="/submit" method="POST">
-        <input type="text" name="fName" placeholder="First name">
-        <input type="text" name="lName" placeholder="Last name">
-        <input type="submit" value="OK">
+        <input id="box" type="text" name="link" placeholder="Your URL goes here">
+        <input id="button" type="submit" value="OK">
     </form>
     <script type="module" src="index.js"></script>
 </body>

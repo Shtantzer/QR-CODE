@@ -22,7 +22,6 @@
 // 6. After entering the URL, a corresponding QR is generated
 // 7. Enable print? download.png?
 
-import inquirer from "inquirer";
 import qr from "qr-image";
 import fs from "fs";
 import express from "express"
@@ -30,37 +29,16 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
+
+app.use(express.static("public")); //my HTML didnt render so I used ChatGPT: Static File Middleware: Express needs to be explicitly told to serve static files. You can do this using the express.static middleware. Here's how you can modify your code to serve static files from the "public" directory: "app.use(express.static("public"));"
 app.use(bodyParser.urlencoded({ extended: true }));
 
-function qrGenerator (req, res, next) {
-  console.log(req.body);
-}
-
-app.use(qrGenerator);
-
-app.get("/", (req, res) => {
-  res.sendFile("/index.html");
+app.post("/submit", (req, res) => {
+  const url = req.body.link;
+  console.log(url);
 });
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-/* inquirer
-  .prompt([
-   { message : "Enter your URL:",
-   name : "URL" }, // must be the same as below in "answers"
-  ])
-  .then((answers) => {
-    const url = answers.URL; //property ".URL" after answers must be the same as above in "name" 
-    var qr_svg = qr.image(url);
-    qr_svg.pipe(fs.createWriteStream('qr_img.png'));
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  }); */
-
-
